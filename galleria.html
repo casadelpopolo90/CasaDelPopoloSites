@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galleria – Casa del Popolo</title>
+  <link rel="stylesheet" href="stile.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #FFFFFF;
+      color: #222222;
+    }
+
+    header {
+      background-color: #D60000;
+      color: #FFFFFF;
+      padding: 20px 0;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .header-content img {
+      position: absolute;
+      left: 0;
+      height: 60px;
+      margin-left: 20px;
+    }
+
+    .header-text {
+      text-align: center;
+    }
+
+    nav {
+      background-color: #990000;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #FFFFFF;
+      margin: 10px 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #FFDADA;
+    }
+
+    .main {
+      padding: 40px 20px;
+      text-align: center;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .event-title {
+      background-color: #FFF5F5;
+      border: 2px solid #D60000;
+      padding: 15px;
+      margin: 20px 0;
+      cursor: pointer;
+      font-weight: bold;
+      color: #990000;
+      border-radius: 6px;
+    }
+
+    .gallery {
+      display: none;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+
+    .gallery img {
+      width: 200px;
+      border: 2px solid #D60000;
+      border-radius: 4px;
+    }
+
+    footer {
+      background-color: #990000;
+      color: #FFFFFF;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
+
+  <script>
+    function toggleGallery(id) {
+      const gallery = document.getElementById(id);
+      gallery.style.display = gallery.style.display === "flex" ? "none" : "flex";
+    }
+  </script>
+</head>
+<body>
+
+  <header>
+    <div class="header-content">
+      <img src="casadelpopolo.png" alt="Logo Casa del Popolo">
+      <div class="header-text">
+        <h1 style="margin: 0;">Casa del Popolo</h1>
+        <p style="margin: 0;">Un luogo per tutti</p>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="chi-siamo.html">Chi Siamo</a>
+    <a href="eventi.html">Eventi</a>
+    <a href="contatti.html">Contatti</a>
+    <a href="spazi.html">Spazi e Servizi</a>
+    <a href="galleria.html">Galleria</a>
+    <a href="recensioni.html">Recensioni</a>
+    <a href="news.html">News</a>
+  </nav>
+
+  <div class="main">
+    <h2 style="color:#D60000;">Galleria Fotografica</h2>
+    <p>Scopri i momenti più belli della Casa del Popolo</p>
+
+    <div class="event-title" onclick="toggleGallery('evento1')">Rock Party</div>
+    <div class="gallery" id="evento1">
+      <img src="party1.jpg" alt="Assemblea 1">
+      <img src="party2.jpg" alt="Assemblea 2">
+      <img src="party3.jpg" alt="Assemblea 3">
+      <img src="party4.jpg" alt="Assemblea 3">
+    </div>
+
+   <div class="event-title" onclick="toggleGallery('evento2')">Aleida Guevara ad Adrano</div>
+<div class="gallery" id="evento2">
+  <img src="cdp1.JPG" alt="Aleida Guevara ad Adrano">
+  <img src="DSC_0004.JPG" alt="Laboratorio 2">
+  <img src="DSC_0011.JPG" alt="Laboratorio 3">
+  <img src="123.JPG" alt="Laboratorio 3">
+  <img src="carmelo.JPG" alt="Laboratorio 3">
+  <img src="cipolla.JPG" alt="Laboratorio 3">
+  <img src="DSC_0015.JPG" alt="Laboratorio 3">
+  <img src="DSC_0016.JPG" alt="Laboratorio 3">
+  <img src="DSC_0022.JPG" alt="Laboratorio 3">
+  <img src="DSC_0023.JPG" alt="Laboratorio 3">
+  <img src="DSC_0026.JPG" alt="Laboratorio 3">
+  <img src="DSC_0035.JPG" alt="Laboratorio 3">
+  <img src="DSC_0041.JPG" alt="Laboratorio 3">
+  <img src="DSC_0043.JPG" alt="Laboratorio 3">
+  <img src="DSC_0047.JPG" alt="Laboratorio 3">
+
+  <!-- 🎥 Video aggiunto -->
+  <video width="400" controls>
+    <source src="DSC_0055.MOV" type="video/mp4">
+    Il tuo browser non supporta il tag video.
+  </video>
+</div>
+
+   
+  <footer>
+    <p>© 2025 Casa del Popolo – G.S.</p>
+  </footer>
+
+</body>
+</html>
