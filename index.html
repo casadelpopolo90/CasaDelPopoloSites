@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa del Popolo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #FFFFFF;
+      color: #222222;
+    }
+
+    header {
+      background-color: #D60000;
+      color: #FFFFFF;
+      padding: 20px 0;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .header-content img {
+      position: absolute;
+      left: 0;
+      height: 60px;
+      margin-left: 20px;
+    }
+
+    .header-text {
+      text-align: center;
+    }
+
+    nav {
+      background-color: #990000;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #FFFFFF;
+      margin: 10px 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #FFDADA;
+    }
+
+    .marquee-container {
+      overflow: hidden;
+      white-space: nowrap;
+      background-color: #D60000;
+      color: #FFFFFF;
+      padding: 10px 0;
+      font-weight: bold;
+    }
+
+    .marquee {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scroll-left 15s linear infinite;
+    }
+
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .main {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .box {
+      border: 2px solid #D60000;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+      background-color: #FFF5F5;
+    }
+
+    .slider-frame {
+      overflow: hidden;
+      width: 100%;
+      max-width: 1000px;
+      margin: 40px auto;
+      border: 2px solid #D60000;
+      border-radius: 6px;
+    }
+
+    .slider-track {
+      display: flex;
+      width: calc(300px * 6); /* 3 immagini visibili + 3 in loop */
+      animation: scrollSlider 20s linear infinite;
+    }
+
+    .slider-track a {
+      flex: 0 0 auto;
+    }
+
+    .slider-track img {
+      width: 300px;
+      height: auto;
+      margin: 0 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      border: 2px solid #990000;
+    }
+
+    @keyframes scrollSlider {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    footer {
+      background-color: #990000;
+      color: #FFFFFF;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-content">
+      <img src="casadelpopolo.png" alt="Logo Casa del Popolo">
+      <div class="header-text">
+        <h1 style="margin: 0;">Casa del Popolo</h1>
+        <p style="margin: 0;">Un luogo per tutti</p>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="chi-siamo.html">Chi Siamo</a>
+    <a href="eventi.html">Eventi</a>
+    <a href="contatti.html">Contatti</a>
+    <a href="spazi.html">Spazi e Servizi</a>
+    <a href="galleria.html">Galleria</a>
+    <a href="recensioni.html">Recensioni</a>
+    <a href="news.html">News</a>
+  </nav>
+
+  <div class="marquee-container">
+    <div class="marquee">Casa del Popolo • Casa del Popolo • Casa del Popolo • Casa del Popolo •</div>
+  </div>
+
+  <div class="main">
+    <div class="box">
+      <h2>Benvenuto alla Casa del Popolo</h2>
+      <p>Scopri le nostre attività, spazi e iniziative. Naviga tra le pagine per partecipare!</p>
+    </div>
+
+    <div class="slider-frame">
+      <div class="slider-track">
+        <a href="news.html"><img src="casadelpopolo.png" alt="Evento Udine 14 Ottobre"></a>
+        <a href="news.html"><img src="10annicdp.jpg" alt="Notizia 2"></a>
+        <a href="news.html"><img src="Rock Party.jpg" alt="Notizia 3"></a>
+<a href="news.html"><img src="festa.jpg" alt="Notizia 3"></a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Casa del Popolo – G.S.</p>
+  </footer>
+
+</body>
+</html>
