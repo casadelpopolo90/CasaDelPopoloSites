@@ -166,6 +166,7 @@
     });
   </script>
 </head>
+
 <body>
 
   <nav>
@@ -175,7 +176,7 @@
     <a href="contatti.html">Contatti</a>
     <a href="spazi.html">Spazi</a>
     <a href="galleria.html">Galleria</a>
-       <a href="news.html">News</a>
+    <a href="news.html">News</a>
   </nav>
 
   <div class="hero">
@@ -186,16 +187,23 @@
   <div class="main">
     <h2>Contattaci</h2>
     <p>Hai domande, proposte o vuoi partecipare? Scrivici!</p>
-    <form>
-      <input type="text" placeholder="Il tuo nome" required>
-      <input type="email" placeholder="La tua email" required>
-      <textarea placeholder="Il tuo messaggio" rows="5" required></textarea>
+
+    <!-- FORM CON FORMSPREE -->
+    <form action="https://formspree.io/f/mnjjnjvg" method="POST">
+      <input type="text" name="nome" placeholder="Il tuo nome" required>
+      <input type="email" name="email" placeholder="La tua email" required>
+      <textarea name="messaggio" placeholder="Il tuo messaggio" rows="5" required></textarea>
+
+      <input type="hidden" name="_subject" value="Nuovo messaggio dal sito Casa del Popolo">
+      <input type="text" name="_gotcha" style="display:none">
+
       <button type="submit">Invia</button>
     </form>
 
     <div class="map-box">
       <h3>Dove ci trovi</h3>
       <p>Via Vittorio Emanuele n.279, Adrano (CT) – 95031</p>
+
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3183.787242905278!2d14.83357407571179!3d37.66234097200879!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1313f5e6e6b1e3a3%3A0x3f1c7a5e4e9b1e9d!2sVia%20Vittorio%20Emanuele%2C%20279%2C%2095031%20Adrano%20CT%2C%20Italia!5e0!3m2!1sit!2sit!4v1697812345678!5m2!1sit!2sit"
         allowfullscreen=""
