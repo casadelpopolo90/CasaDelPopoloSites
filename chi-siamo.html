@@ -4,124 +4,255 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chi Siamo – Casa del Popolo</title>
-  <link rel="stylesheet" href="stile.css">
+
+  <!-- FONT MODERNO -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --rosso: #d60000;
+      --rosso-scuro: #990000;
+      --rosso-chiaro: #ff4d4d;
+      --nero: #1a1a1a;
+      --grigio: #f5f5f5;
+    }
+
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #FFFFFF;
-      color: #222222;
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: var(--nero);
+      overflow-x: hidden;
     }
 
-    header {
-      background-color: #D60000;
-      color: #FFFFFF;
-      padding: 20px 0;
+    /* ANIMAZIONI */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1.2s ease forwards;
     }
 
-    .header-content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative;
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .header-content img {
-      position: absolute;
-      left: 0;
-      height: 60px;
-      margin-left: 20px;
-    }
-
-    .header-text {
-      text-align: center;
-    }
-
+    /* NAVBAR */
     nav {
-      background-color: #990000;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 18px 0;
       display: flex;
       justify-content: center;
-      padding: 10px 0;
-      flex-wrap: wrap;
+      gap: 25px;
+      z-index: 1000;
+      transition: 0.4s;
+      font-weight: 600;
+      backdrop-filter: blur(10px);
+    }
+
+    nav.scrolled {
+      background-color: var(--rosso-scuro);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
 
     nav a {
-      color: #FFFFFF;
-      margin: 10px 15px;
+      color: #ffffff;
       text-decoration: none;
-      font-weight: bold;
+      transition: 0.3s;
     }
 
     nav a:hover {
-      color: #FFDADA;
+      color: var(--rosso-chiaro);
     }
 
-    .main {
-      padding: 40px 20px;
+    /* HERO */
+    .hero {
+      height: 60vh;
+      background: url('casadelpopolo.png') center/cover no-repeat;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
     }
 
-    .content-box {
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.4), rgba(153,0,0,0.8));
+    }
+
+    .hero-content {
+      position: relative;
+      color: #ffffff;
+      z-index: 2;
       max-width: 800px;
-      margin: 0 auto;
-      background-color: #FFF5F5;
-      border: 2px solid #D60000;
+      padding: 20px;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    /* SEZIONE INTRO */
+    .intro {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .intro-box {
+      background: #ffffff;
+      border-left: 6px solid var(--rosso);
       padding: 30px;
+      max-width: 900px;
+      margin: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
       text-align: left;
     }
 
+    .intro-box h2 {
+      margin-top: 0;
+      font-size: 2.2rem;
+      color: var(--rosso-scuro);
+    }
+
+    .intro-box p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    /* TIMELINE */
+    .timeline {
+      max-width: 900px;
+      margin: 80px auto;
+      position: relative;
+      padding-left: 30px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--rosso);
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      margin-bottom: 50px;
+      position: relative;
+      padding-left: 40px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 5px;
+      width: 20px;
+      height: 20px;
+      background: var(--rosso-scuro);
+      border-radius: 50%;
+      border: 3px solid #ffffff;
+      box-shadow: 0 0 0 3px var(--rosso);
+    }
+
+    .timeline-item h3 {
+      margin: 0;
+      color: var(--rosso-scuro);
+      font-size: 1.4rem;
+    }
+
+    .timeline-item p {
+      margin-top: 8px;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    /* FOOTER */
     footer {
-      background-color: #990000;
-      color: #FFFFFF;
+      background-color: var(--rosso-scuro);
+      color: #ffffff;
       text-align: center;
-      padding: 20px;
-      margin-top: 40px;
+      padding: 30px;
+      margin-top: 80px;
+      font-size: 0.95rem;
     }
   </style>
-</head>
-<body>
 
-  <header>
-    <div class="header-content">
-     
-      <div class="header-text">
-        <h1 style="margin: 0;">Casa del Popolo</h1>
-        <p style="margin: 0;">Un luogo per tutti</p>
-      </div>
-    </div>
-  </header>
+  <script>
+    // Navbar che diventa rossa quando scrolli
+    window.addEventListener("scroll", () => {
+      const nav = document.querySelector("nav");
+      if (window.scrollY > 50) nav.classList.add("scrolled");
+      else nav.classList.remove("scrolled");
+    });
+  </script>
+</head>
+
+<body>
 
   <nav>
     <a href="index.html">Home</a>
     <a href="chi-siamo.html">Chi Siamo</a>
     <a href="eventi.html">Eventi</a>
     <a href="contatti.html">Contatti</a>
-    <a href="spazi.html">Spazi e Servizi</a>
+    <a href="spazi.html">Spazi</a>
     <a href="galleria.html">Galleria</a>
-    <a href="recensioni.html">Recensioni</a>
-    <a href="news.html">news</a>
-
+   
+    <a href="news.html">News</a>
   </nav>
 
-  <div class="main">
-    <h2>Chi Siamo</h2>
-    <div class="content-box">
-      <p><strong>Casa del Popolo</strong> è uno spazio aperto, inclusivo e partecipativo nato per dare voce alle persone, promuovere la cultura, e rafforzare il senso di comunità.</p>
+  <div class="hero">
+    <div class="hero-content fade-in">
+      <h1>Chi Siamo</h1>
+    </div>
+  </div>
+
+  <section class="intro fade-in">
+    <div class="intro-box">
+      <h2>La nostra identità</h2>
+      <p><strong>Casa del Popolo</strong> è uno spazio aperto, inclusivo e partecipativo nato per dare voce alle persone, promuovere la cultura e rafforzare il senso di comunità.</p>
 
       <p>Fondata nel cuore del quartiere, la Casa del Popolo è gestita da volontari e cittadini che credono nella collaborazione, nella solidarietà e nella libertà di espressione.</p>
 
       <p>Organizziamo eventi, incontri, laboratori, proiezioni e attività per tutte le età. Il nostro obiettivo è creare un luogo dove ognuno possa sentirsi parte attiva del cambiamento.</p>
 
-      <p>Crediamo che la partecipazione sia il primo passo verso una società più giusta e consapevole. Vieni a conoscerci, porta le tue idee, e costruisci con noi!</p>
+      <p>Crediamo che la partecipazione sia il primo passo verso una società più giusta e consapevole. Vieni a conoscerci, porta le tue idee e costruisci con noi.</p>
     </div>
-  </div>
+  </section>
+
+  <section class="timeline fade-in">
+    <div class="timeline-item">
+      <h3>Le origini</h3>
+      <p>Nata come punto di ritrovo popolare, la Casa del Popolo ha sempre rappresentato un luogo di incontro e confronto.</p>
+    </div>
+
+    <div class="timeline-item">
+      <h3>La crescita</h3>
+      <p>Negli anni abbiamo ampliato spazi, attività e collaborazioni, diventando un riferimento culturale per il territorio.</p>
+    </div>
+
+    <div class="timeline-item">
+      <h3>Oggi</h3>
+      <p>Continuiamo a promuovere partecipazione, cultura e solidarietà, con una comunità sempre più attiva e coinvolta.</p>
+    </div>
+  </section>
 
   <footer>
-    <p>© 2025 Casa del Popolo – G.S.</p>
+    © 2025 Casa del Popolo – G.S.
   </footer>
 
 </body>
 </html>
-
