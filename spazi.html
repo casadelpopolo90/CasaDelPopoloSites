@@ -4,98 +4,133 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Spazi e Servizi – Casa del Popolo</title>
-  <link rel="stylesheet" href="stile.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --rosso: #d60000;
+      --rosso-scuro: #990000;
+      --rosso-chiaro: #ff4d4d;
+      --nero: #1a1a1a;
+      --grigio: #f5f5f5;
+    }
+
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #FFFFFF;
-      color: #222222;
-    }
-
-    header {
-      background-color: #D60000;
-      color: #FFFFFF;
-      padding: 20px 0;
-    }
-
-    .header-content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .header-content img {
-      position: absolute;
-      left: 0;
-      height: 60px;
-      margin-left: 20px;
-    }
-
-    .header-text {
-      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: var(--nero);
+      overflow-x: hidden;
     }
 
     nav {
-      background-color: #990000;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 18px 0;
       display: flex;
       justify-content: center;
-      padding: 10px 0;
-      flex-wrap: wrap;
+      gap: 25px;
+      z-index: 1000;
+      transition: 0.4s;
+      font-weight: 600;
+      backdrop-filter: blur(10px);
+    }
+
+    nav.scrolled {
+      background-color: var(--rosso-scuro);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
 
     nav a {
-      color: #FFFFFF;
-      margin: 10px 15px;
+      color: #ffffff;
       text-decoration: none;
-      font-weight: bold;
+      transition: 0.3s;
     }
 
     nav a:hover {
-      color: #FFDADA;
+      color: var(--rosso-chiaro);
+    }
+
+    .hero {
+      height: 55vh;
+      background: linear-gradient(180deg, var(--rosso), var(--rosso-scuro));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #ffffff;
+      padding-top: 80px;
+    }
+
+    .hero img {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin: 0;
     }
 
     .main {
-      padding: 40px 20px;
+      padding: 80px 20px;
       text-align: center;
+    }
+
+    .main h2 {
+      font-size: 2.2rem;
+      color: var(--rosso-scuro);
+      margin-bottom: 10px;
+    }
+
+    .main p {
+      font-size: 1.1rem;
+      opacity: 0.8;
+      margin-bottom: 40px;
     }
 
     .space-box {
       max-width: 800px;
       margin: 0 auto;
-      background-color: #FFF5F5;
-      border: 2px solid #D60000;
+      background-color: #ffffff;
+      border-left: 6px solid var(--rosso);
       padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
       text-align: left;
     }
 
     .space-box ul {
       padding-left: 20px;
+      margin-top: 20px;
+    }
+
+    .space-box li {
+      margin-bottom: 12px;
+      line-height: 1.6;
     }
 
     footer {
-      background-color: #990000;
-      color: #FFFFFF;
+      background-color: var(--rosso-scuro);
+      color: #ffffff;
       text-align: center;
-      padding: 20px;
-      margin-top: 40px;
+      padding: 30px;
+      margin-top: 80px;
+      font-size: 0.95rem;
     }
   </style>
+
+  <script>
+    window.addEventListener("scroll", () => {
+      const nav = document.querySelector("nav");
+      if (window.scrollY > 50) nav.classList.add("scrolled");
+      else nav.classList.remove("scrolled");
+    });
+  </script>
 </head>
 <body>
-
-  <header>
-    <div class="header-content">
-      
-      <div class="header-text">
-        <h1 style="margin: 0;">Casa del Popolo</h1>
-        <p style="margin: 0;">Un luogo per tutti</p>
-      </div>
-    </div>
-  </header>
 
   <nav>
     <a href="index.html">Home</a>
@@ -104,18 +139,21 @@
     <a href="contatti.html">Contatti</a>
     <a href="spazi.html">Spazi e Servizi</a>
     <a href="galleria.html">Galleria</a>
-    <a href="recensioni.html">Recensioni</a>
-<a href="news.html">news</a>
+       <a href="news.html">News</a>
   </nav>
 
+  <div class="hero">
+    <img src="casadelpopolo.png" alt="Logo Casa del Popolo">
+    <h1>Spazi e Servizi</h1>
+  </div>
+
   <div class="main">
-    <h2>Spazi e Servizi</h2>
     <div class="space-box">
       <p>La Casa del Popolo mette a disposizione diversi ambienti e servizi per la comunità:</p>
       <ul>
         <li><strong>Sala Riunioni:</strong> per incontri, assemblee e dibattiti</li>
         <li><strong>Archivio di libri:</strong> con libri, riviste e materiali consultabili</li>
-        <li><strong>Spazio Ricreativo:</strong> area giochi, laboratori creativi è Cineforum</li>
+        <li><strong>Spazio Ricreativo:</strong> area giochi, laboratori creativi e cineforum</li>
         <li><strong>Cucina:</strong> per cene sociali</li>
         <li><strong>Spazio Espositivo:</strong> per mostre, fotografie e arte locale</li>
         <li><strong>Accessibilità:</strong> ingresso e servizi adatti a tutte le persone</li>
@@ -125,9 +163,8 @@
   </div>
 
   <footer>
-    <p>© 2025 Casa del Popolo – G.S.</p>
+    © 2025 Casa del Popolo – G.S.
   </footer>
 
 </body>
 </html>
-
