@@ -4,127 +4,186 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contatti – Casa del Popolo</title>
-  <link rel="stylesheet" href="stile.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --rosso: #d60000;
+      --rosso-scuro: #990000;
+      --rosso-chiaro: #ff4d4d;
+      --nero: #1a1a1a;
+      --grigio: #f5f5f5;
+    }
+
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #FFFFFF;
-      color: #222222;
-    }
-
-    header {
-      background-color: #D60000;
-      color: #FFFFFF;
-      padding: 20px 0;
-    }
-
-    .header-content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .header-content img {
-      position: absolute;
-      left: 0;
-      height: 60px;
-      margin-left: 20px;
-    }
-
-    .header-text {
-      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: var(--nero);
+      overflow-x: hidden;
     }
 
     nav {
-      background-color: #990000;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 18px 0;
       display: flex;
       justify-content: center;
-      padding: 10px 0;
-      flex-wrap: wrap;
+      gap: 25px;
+      z-index: 1000;
+      transition: 0.4s;
+      font-weight: 600;
+      backdrop-filter: blur(10px);
+    }
+
+    nav.scrolled {
+      background-color: var(--rosso-scuro);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
 
     nav a {
-      color: #FFFFFF;
-      margin: 10px 15px;
+      color: #ffffff;
       text-decoration: none;
-      font-weight: bold;
+      transition: 0.3s;
     }
 
     nav a:hover {
-      color: #FFDADA;
+      color: var(--rosso-chiaro);
+    }
+
+    .hero {
+      height: 55vh;
+      background: linear-gradient(180deg, var(--rosso), var(--rosso-scuro));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #ffffff;
+      padding-top: 80px;
+    }
+
+    .hero img {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin: 0;
     }
 
     .main {
-      padding: 40px 20px;
+      padding: 80px 20px;
       text-align: center;
+    }
+
+    .main h2 {
+      font-size: 2.2rem;
+      color: var(--rosso-scuro);
+      margin-bottom: 10px;
+    }
+
+    .main p {
+      font-size: 1.1rem;
+      opacity: 0.8;
+      margin-bottom: 40px;
     }
 
     form {
       max-width: 600px;
       margin: 0 auto;
-      background-color: #FFF5F5;
-      border: 2px solid #D60000;
-      padding: 20px;
+      background-color: #ffffff;
+      border-left: 6px solid var(--rosso);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
     }
 
     form input, form textarea {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       margin: 10px 0;
-      border: 1px solid #D60000;
-      border-radius: 4px;
+      border: 1px solid var(--rosso);
+      border-radius: 6px;
+      font-size: 1rem;
     }
 
     form button {
-      background-color: #D60000;
-      color: #FFFFFF;
+      background-color: var(--rosso);
+      color: #ffffff;
       border: none;
-      padding: 10px 20px;
+      padding: 12px 24px;
       cursor: pointer;
-      font-weight: bold;
+      font-weight: 600;
+      border-radius: 6px;
+      transition: 0.3s;
     }
 
     form button:hover {
-      background-color: #990000;
+      background-color: var(--rosso-scuro);
+    }
+
+    .map-box {
+      max-width: 800px;
+      margin: 60px auto 0;
+      background: #ffffff;
+      border-left: 6px solid var(--rosso);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+    }
+
+    .map-box h3 {
+      margin-top: 0;
+      color: var(--rosso-scuro);
+    }
+
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 8px;
+      margin-top: 10px;
     }
 
     footer {
-      background-color: #990000;
-      color: #FFFFFF;
+      background-color: var(--rosso-scuro);
+      color: #ffffff;
       text-align: center;
-      padding: 20px;
-      margin-top: 40px;
+      padding: 30px;
+      margin-top: 80px;
+      font-size: 0.95rem;
     }
   </style>
+
+  <script>
+    window.addEventListener("scroll", () => {
+      const nav = document.querySelector("nav");
+      if (window.scrollY > 50) nav.classList.add("scrolled");
+      else nav.classList.remove("scrolled");
+    });
+  </script>
 </head>
 <body>
-
-  <header>
-    <div class="header-content">
-      
-      <div class="header-text">
-        <h1 style="margin: 0;">Casa del Popolo</h1>
-        <p style="margin: 0;">Un luogo per tutti</p>
-      </div>
-    </div>
-  </header>
 
   <nav>
     <a href="index.html">Home</a>
     <a href="chi-siamo.html">Chi Siamo</a>
     <a href="eventi.html">Eventi</a>
     <a href="contatti.html">Contatti</a>
-    <a href="spazi.html">Spazi e Servizi</a>
+    <a href="spazi.html">Spazi</a>
     <a href="galleria.html">Galleria</a>
-    <a href="recensioni.html">Recensioni</a>
-<a href="news.html">news</a>
+       <a href="news.html">News</a>
   </nav>
 
-    <div class="main">
+  <div class="hero">
+    <img src="casadelpopolo.png" alt="Logo Casa del Popolo">
+    <h1>Contatti</h1>
+  </div>
+
+  <div class="main">
     <h2>Contattaci</h2>
     <p>Hai domande, proposte o vuoi partecipare? Scrivici!</p>
     <form>
@@ -134,14 +193,11 @@
       <button type="submit">Invia</button>
     </form>
 
-    <div style="margin-top: 40px;">
+    <div class="map-box">
       <h3>Dove ci trovi</h3>
       <p>Via Vittorio Emanuele n.279, Adrano (CT) – 95031</p>
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3183.787242905278!2d14.83357407571179!3d37.66234097200879!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1313f5e6e6b1e3a3%3A0x3f1c7a5e4e9b1e9d!2sVia%20Vittorio%20Emanuele%2C%20279%2C%2095031%20Adrano%20CT%2C%20Italia!5e0!3m2!1sit!2sit!4v1697812345678!5m2!1sit!2sit"
-        width="100%"
-        height="300"
-        style="border:0;"
         allowfullscreen=""
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade">
@@ -150,9 +206,8 @@
   </div>
 
   <footer>
-    <p>© 2025 Casa del Popolo – G.S.</p>
+    © 2025 Casa del Popolo – G.S.
   </footer>
 
 </body>
 </html>
-
