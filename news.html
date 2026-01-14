@@ -4,94 +4,161 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>News – Casa del Popolo</title>
-  <link rel="stylesheet" href="stile.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #FFFFFF;
-      color: #222;
+    :root {
+      --rosso: #d60000;
+      --rosso-scuro: #990000;
+      --rosso-chiaro: #ff4d4d;
+      --nero: #1a1a1a;
+      --grigio: #f5f5f5;
     }
 
-    header, nav, footer {
-      background-color: #D60000;
-      color: #FFF;
-      text-align: center;
-      padding: 20px;
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: var(--nero);
+      overflow-x: hidden;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 18px 0;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      z-index: 1000;
+      transition: 0.4s;
+      font-weight: 600;
+      backdrop-filter: blur(10px);
+    }
+
+    nav.scrolled {
+      background-color: var(--rosso-scuro);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
 
     nav a {
-      color: #FFF;
-      margin: 0 15px;
+      color: #ffffff;
       text-decoration: none;
-      font-weight: bold;
+      transition: 0.3s;
     }
 
     nav a:hover {
-      color: #FFDADA;
+      color: var(--rosso-chiaro);
     }
 
-    .main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-
-    .featured {
+    /* HERO */
+    .hero {
+      height: 50vh;
+      background: linear-gradient(180deg, var(--rosso), var(--rosso-scuro));
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-bottom: 40px;
+      justify-content: center;
+      text-align: center;
+      color: #ffffff;
+      padding-top: 80px;
     }
 
-    .featured img {
-      max-width: 100%;
-      border: 2px solid #990000;
-      border-radius: 4px;
+    .hero img {
+      width: 120px;
+      margin-bottom: 20px;
     }
 
-    .featured h2 {
-      color: #990000;
-      margin-top: 20px;
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin: 0;
     }
 
+    .hero p {
+      opacity: 0.9;
+      margin-top: 10px;
+      font-size: 1.2rem;
+    }
+
+    /* MAIN */
+    .main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 20px;
+    }
+
+    /* GRID NEWS */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
     }
 
     .article {
-      border: 2px solid #D60000;
-      padding: 15px;
-      background-color: #FFF5F5;
-      border-radius: 6px;
+      background: #ffffff;
+      border-left: 6px solid var(--rosso);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      transition: 0.3s;
     }
 
+    .article:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    /* 🔥 IMMAGINI RIDIMENSIONATE AUTOMATICAMENTE */
     .article img {
       width: 100%;
-      border-radius: 4px;
-      margin-bottom: 10px;
+      height: 180px;        /* Altezza fissa */
+      object-fit: cover;    /* Ritaglia senza deformare */
+      border-radius: 10px;
+      margin-bottom: 15px;
+      border: 3px solid var(--rosso-scuro);
     }
 
     .article h3 {
-      color: #990000;
-      margin-bottom: 5px;
+      margin: 0;
+      color: var(--rosso-scuro);
+      font-size: 1.4rem;
     }
 
     .meta {
-      font-size: 12px;
+      font-size: 0.85rem;
       color: #666;
-      margin-bottom: 10px;
+      margin: 8px 0 12px;
+    }
+
+    .article p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--rosso-scuro);
+      color: #ffffff;
+      text-align: center;
+      padding: 30px;
+      margin-top: 80px;
+      font-size: 0.95rem;
     }
   </style>
-</head>
-<body>
 
-  <header>
-    <h1>Casa del Popolo – News</h1>
-    <p>Comunicati, eventi e aggiornamenti dalla comunità</p>
-  </header>
+  <script>
+    window.addEventListener("scroll", () => {
+      const nav = document.querySelector("nav");
+      if (window.scrollY > 50) nav.classList.add("scrolled");
+      else nav.classList.remove("scrolled");
+    });
+  </script>
+</head>
+
+<body>
 
   <nav>
     <a href="index.html">Home</a>
@@ -100,35 +167,50 @@
     <a href="contatti.html">Contatti</a>
     <a href="spazi.html">Spazi</a>
     <a href="galleria.html">Galleria</a>
-    <a href="recensioni.html">Recensioni</a>
     <a href="news.html">News</a>
   </nav>
 
+  <div class="hero">
+    <img src="casadelpopolo.png" alt="Logo Casa del Popolo">
+    <h1>News</h1>
+    <p>Comunicati, eventi e aggiornamenti dalla comunità</p>
+  </div>
+
+  <div class="main">
+
     <div class="grid">
+
       <div class="article">
         <img src="IMGROCKPARTY.jpg" alt="1° edizione Rock Party">
-        <h3>INIZIATIVA DI MUSICA E CONFRONTO</h3>
-        <p class="meta">12 Luglio 2025 – staff C.D.P.</p>
-        <p>jam-session dove le parole non arrivano la musica parla.</p>
+        <h3>Iniziativa di Musica e Confronto</h3>
+        <p class="meta">12 Luglio 2025 – Staff C.D.P.</p>
+        <p>Una jam-session dove le parole non arrivano, la musica parla.</p>
       </div>
 
       <div class="article">
-        <img src="Screenshot 2025-11-24 125439.png" alt="BOICOTTA IL GENOCIDIO">
-        <h3>BOICOTTA IL GENOCIDIO</h3>
-        <p class="meta">22 NOVEMBRE 2025</p>
-        <p>BOICOTTA IL GENOCIDIO IN PALESTINA
-DIBATTITO PUBBLICO ALLA “CASA DEL POPOLO G. ROSANO E P. MACCARRONE”</p>
+        <img src="615208779_1320788406754874_7418802225648734435_n.jpg" alt="Repressione del Dissenso">
+        <h3>Dibattito pubblico - La Repressione del dissenso</h3>
+        <p class="meta">17/01/2026</p>
+        <p>Il 17 gennaio si compiono 75 anni da quando il giovane bracciante comunista Girolamo Rosano venne assassinato mentre partecipava ad una manifestazione per la pace e contro l’invio di truppe italiane per assistere gli USA nell’ennesima aggressione imperialista, in quell’anno nei confronti dellla Corea.
+
+Oggi come allora, gli Stati Uniti e i suoi alleati europei insieme alla NATO, muovono guerre, rovesciano governi legittimi e sottraggono ricchezze ad intere popolazioni, in barba al diritto internazionale; il rapimento del presidente venezuelano Nicolás Maduro è l’esempio più recente.
+
+Oggi come allora un gran parte della popolazione scende in piazza contro governi che giustificano, autorizzano e finanziano le guerre imperialiste.
+
+Oggi come allora i governi di questi paesi, che si definiscono democratici, reprimono ferocemente le manifestazioni di dissenso, come abbiamo visto è stato fatto nei confronti di chi manifestava per la Palestina qui in Italia, come in Francia o in Germania.
+
+In questo contesto non stupisce che quest’anno sia stato approvato il “Decreto Sicurezza” che ha modificato il nostro codice penale introducendo nuovi reati ed inasprendo alcune delle pene già esistenti.
+
+Di tutto questo parleremo sabato 17 gennaio, in un dibattito pubblico organizzato presso la nostra associazione. A seguire cena sociale di autofinanziamento. </p>
       </div>
 
-      
     </div>
+
   </div>
 
   <footer>
-    <p>© 2025 Casa del Popolo – G.S.</p>
+    © 2025 Casa del Popolo – G.S.
   </footer>
 
 </body>
 </html>
-
-
