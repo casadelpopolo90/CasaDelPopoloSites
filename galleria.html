@@ -4,120 +4,173 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Galleria – Casa del Popolo</title>
-  <link rel="stylesheet" href="stile.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --rosso: #d60000;
+      --rosso-scuro: #990000;
+      --rosso-chiaro: #ff4d4d;
+      --nero: #1a1a1a;
+      --grigio: #f5f5f5;
+    }
+
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #FFFFFF;
-      color: #222222;
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: var(--nero);
+      overflow-x: hidden;
     }
 
-    header {
-      background-color: #D60000;
-      color: #FFFFFF;
-      padding: 20px 0;
-    }
-
-    .header-content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .header-content img {
-      position: absolute;
-      left: 0;
-      height: 60px;
-      margin-left: 20px;
-    }
-
-    .header-text {
-      text-align: center;
-    }
-
+    /* NAVBAR */
     nav {
-      background-color: #990000;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 18px 0;
       display: flex;
       justify-content: center;
-      padding: 10px 0;
-      flex-wrap: wrap;
+      gap: 25px;
+      z-index: 1000;
+      transition: 0.4s;
+      font-weight: 600;
+      backdrop-filter: blur(10px);
+    }
+
+    nav.scrolled {
+      background-color: var(--rosso-scuro);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
 
     nav a {
-      color: #FFFFFF;
-      margin: 10px 15px;
+      color: #ffffff;
       text-decoration: none;
-      font-weight: bold;
+      transition: 0.3s;
     }
 
     nav a:hover {
-      color: #FFDADA;
+      color: var(--rosso-chiaro);
     }
 
-    .main {
-      padding: 40px 20px;
-      text-align: center;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .event-title {
-      background-color: #FFF5F5;
-      border: 2px solid #D60000;
-      padding: 15px;
-      margin: 20px 0;
-      cursor: pointer;
-      font-weight: bold;
-      color: #990000;
-      border-radius: 6px;
-    }
-
-    .gallery {
-      display: none;
-      flex-wrap: wrap;
-      gap: 10px;
+    /* HERO */
+    .hero {
+      height: 55vh;
+      background: linear-gradient(180deg, var(--rosso), var(--rosso-scuro));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
-      margin-top: 20px;
+      text-align: center;
+      color: #ffffff;
+      padding-top: 80px;
+    }
+
+    .hero img {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    /* MAIN */
+    .main {
+      padding: 80px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .main h2 {
+      font-size: 2.4rem;
+      color: var(--rosso-scuro);
+      margin-bottom: 10px;
+    }
+
+    .main p {
+      font-size: 1.1rem;
+      opacity: 0.8;
       margin-bottom: 40px;
     }
 
-    .gallery img {
-      width: 200px;
-      border: 2px solid #D60000;
-      border-radius: 4px;
+    /* EVENT TITLE */
+    .event-title {
+      background-color: #ffffff;
+      border-left: 6px solid var(--rosso);
+      padding: 18px;
+      margin: 25px 0;
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--rosso-scuro);
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      transition: 0.3s;
     }
 
+    .event-title:hover {
+      transform: translateY(-4px);
+      background-color: #fff3f3;
+    }
+
+    /* GALLERY */
+    .gallery {
+      display: none;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 20px;
+      margin-bottom: 40px;
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    .gallery img {
+      width: 220px;
+      border-radius: 10px;
+      border: 3px solid var(--rosso-scuro);
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      border-color: var(--rosso);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* FOOTER */
     footer {
-      background-color: #990000;
-      color: #FFFFFF;
+      background-color: var(--rosso-scuro);
+      color: #ffffff;
       text-align: center;
-      padding: 20px;
-      margin-top: 40px;
+      padding: 30px;
+      margin-top: 80px;
+      font-size: 0.95rem;
     }
   </style>
 
   <script>
+    window.addEventListener("scroll", () => {
+      const nav = document.querySelector("nav");
+      if (window.scrollY > 50) nav.classList.add("scrolled");
+      else nav.classList.remove("scrolled");
+    });
+
     function toggleGallery(id) {
       const gallery = document.getElementById(id);
       gallery.style.display = gallery.style.display === "flex" ? "none" : "flex";
     }
   </script>
 </head>
-<body>
 
-  <header>
-    <div class="header-content">
-     
-      <div class="header-text">
-        <h1 style="margin: 0;">Casa del Popolo</h1>
-        <p style="margin: 0;">Un luogo per tutti</p>
-      </div>
-    </div>
-  </header>
+<body>
 
   <nav>
     <a href="index.html">Home</a>
@@ -126,67 +179,73 @@
     <a href="contatti.html">Contatti</a>
     <a href="spazi.html">Spazi e Servizi</a>
     <a href="galleria.html">Galleria</a>
-    <a href="recensioni.html">Recensioni</a>
     <a href="news.html">News</a>
   </nav>
 
+  <div class="hero">
+    <img src="casadelpopolo.png" alt="Logo Casa del Popolo">
+    <h1>Galleria Fotografica</h1>
+  </div>
+
   <div class="main">
-    <h2 style="color:#D60000;">Galleria Fotografica</h2>
     <p>Scopri i momenti più belli della Casa del Popolo</p>
 
+    <!-- ROCK PARTY -->
     <div class="event-title" onclick="toggleGallery('evento1')">Rock Party</div>
     <div class="gallery" id="evento1">
-      <img src="party1.jpg" alt="Assemblea 1">
-      <img src="party2.jpg" alt="Assemblea 2">
-      <img src="party3.jpg" alt="Assemblea 3">
-      <img src="party4.jpg" alt="Assemblea 3">
+      <img src="party1.jpg">
+      <img src="party2.jpg">
+      <img src="party3.jpg">
+      <img src="party4.jpg">
     </div>
 
-   <div class="event-title" onclick="toggleGallery('evento2')">Aleida Guevara ad Adrano</div>
-<div class="gallery" id="evento2">
-  <img src="cdp1.JPG" alt="Aleida Guevara ad Adrano">
-  <img src="DSC_0004.JPG" alt="Laboratorio 2">
-  <img src="DSC_0011.JPG" alt="Laboratorio 3">
-  <img src="123.JPG" alt="Laboratorio 3">
-  <img src="carmelo.JPG" alt="Laboratorio 3">
-  <img src="cipolla.JPG" alt="Laboratorio 3">
-  <img src="DSC_0015.JPG" alt="Laboratorio 3">
-  <img src="DSC_0016.JPG" alt="Laboratorio 3">
-  <img src="DSC_0022.JPG" alt="Laboratorio 3">
-  <img src="DSC_0023.JPG" alt="Laboratorio 3">
-  <img src="DSC_0026.JPG" alt="Laboratorio 3">
-  <img src="DSC_0035.JPG" alt="Laboratorio 3">
-  <img src="DSC_0041.JPG" alt="Laboratorio 3">
-  <img src="DSC_0043.JPG" alt="Laboratorio 3">
-  <img src="DSC_0047.JPG" alt="Laboratorio 3">
-
-  <!-- 🎥 Video aggiunto -->
-  <video width="400" controls>
-    <source src="DSC_0055.MOV" type="video/mp4">
-    Il tuo browser non supporta il tag video.
-  </video>
-</div>
-  <div class="BOICOTTA IL GENOCIDIO" onclick="toggleGallery('evento3')">BOICOTTA IL GENOCIDIO</div>
-    <div class="gallery" id="evento1">
-      <img src="584401890_17847929058606965_7667099833632827439_n.jpg" alt="Assemblea 1">
-      <img src="584402625_17847966690606965_8220249919249620241_n.jpg" alt="Assemblea 2">
-      <img src="584507583_17847966354606965_175709158214484113_n.jpg" alt="Assemblea 3">
-      <img src="587011715_17847966663606965_7925918280409819733_n.jpg" alt="Assemblea 3">
-      <img src="587379360_17847966372606965_7967531165915527932_n.jpg" alt="Assemblea 3">
-      <img src="587561243_17847966390606965_8199891396066002943_n.jpg" alt="Assemblea 3">
-      <img src="587597050_17847966330606965_4365218033655891367_n.jpg" alt="Assemblea 3">
-      <img src="587776410_17847966399606965_2369911778312169150_n.jpg" alt="Assemblea 3">
-      <img src="587946392_17847934068606965_2279139469616070085_n.jpg" alt="Assemblea 3">
-      <img src="588024831_17847966708606965_5267399529899760560_n.jpg" alt="Assemblea 3">
-      <img src="588436276_17847966381606965_1334199523039485416_n.jpg" alt="Assemblea 3">
+    <!-- ALEIDA GUEVARA -->
+    <div class="event-title" onclick="toggleGallery('evento2')">Aleida Guevara ad Adrano</div>
+    <div class="gallery" id="evento2">
+      <img src="cdp1.JPG">
+      <img src="DSC_0004.JPG">
+      <img src="DSC_0011.JPG">
+      <img src="123.JPG">
+      <img src="carmelo.JPG">
+      <img src="cipolla.JPG">
+      <img src="DSC_0015.JPG">
+      <img src="DSC_0016.JPG">
+      <img src="DSC_0022.JPG">
+      <img src="DSC_0023.JPG">
+      <img src="DSC_0026.JPG">
+      <img src="DSC_0035.JPG">
+      <img src="DSC_0041.JPG">
+      <img src="DSC_0043.JPG">
+      <img src="DSC_0047.JPG">
     </div>
-   
+
+    <!-- BOICOTTA IL GENOCIDIO -->
+    <div class="event-title" onclick="toggleGallery('evento3')">Boicotta il Genocidio</div>
+    <div class="gallery" id="evento3">
+      <img src="584401890_17847929058606965_7667099833632827439_n.jpg">
+      <img src="584402625_17847966690606965_8220249919249620241_n.jpg">
+      <img src="584507583_17847966354606965_175709158214484113_n.jpg">
+      <img src="587011715_17847966663606965_7925918280409819733_n.jpg">
+      <img src="587379360_17847966372606965_7967531165915527932_n.jpg">
+      <img src="587561243_17847966390606965_8199891396066002943_n.jpg">
+      <img src="587597050_17847966330606965_4365218033655891367_n.jpg">
+      <img src="587776410_17847966399606965_2369911778312169150_n.jpg">
+      <img src="584735618_1277893827710999_645934400724601897_n.jpg">
+    </div>
+
+    <!-- LA REPRESSIONE DEL DISSENSO -->
+    <div class="event-title" onclick="toggleGallery('evento4')">La Repressione del Dissenso</div>
+    <div class="gallery" id="evento4">
+      <img src="615208779_1320788406754874_7418802225648734435_n.jpg">
+      <img src="dissenso2.jpg">
+      <img src="dissenso3.jpg">
+    </div>
+
+  </div>
+
   <footer>
-    <p>© 2025 Casa del Popolo – G.S.</p>
+    © 2025 Casa del Popolo – G.S.
   </footer>
 
 </body>
 </html>
-
-
-
