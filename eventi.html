@@ -4,122 +4,226 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eventi – Casa del Popolo</title>
-  <link rel="stylesheet" href="stile.css">
+
+  <!-- FONT MODERNO -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --rosso: #d60000;
+      --rosso-scuro: #990000;
+      --rosso-chiaro: #ff4d4d;
+      --nero: #1a1a1a;
+      --grigio: #f5f5f5;
+    }
+
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #FFFFFF;
-      color: #222222;
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: var(--nero);
+      overflow-x: hidden;
     }
 
-    header {
-      background-color: #D60000;
-      color: #FFFFFF;
-      padding: 20px 0;
+    /* ANIMAZIONI */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1.2s ease forwards;
     }
 
-    .header-content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative;
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .header-content img {
-      position: absolute;
-      left: 0;
-      height: 60px;
-      margin-left: 20px;
-    }
-
-    .header-text {
-      text-align: center;
-    }
-
+    /* NAVBAR */
     nav {
-      background-color: #990000;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 18px 0;
       display: flex;
       justify-content: center;
-      padding: 10px 0;
-      flex-wrap: wrap;
+      gap: 25px;
+      z-index: 1000;
+      transition: 0.4s;
+      font-weight: 600;
+      backdrop-filter: blur(10px);
+    }
+
+    nav.scrolled {
+      background-color: var(--rosso-scuro);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
 
     nav a {
-      color: #FFFFFF;
-      margin: 10px 15px;
+      color: #ffffff;
       text-decoration: none;
-      font-weight: bold;
+      transition: 0.3s;
     }
 
     nav a:hover {
-      color: #FFDADA;
+      color: var(--rosso-chiaro);
     }
 
+    /* HERO */
+    .hero {
+      height: 55vh;
+      background: url('casadelpopolo.png') center/cover no-repeat;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.4), rgba(153,0,0,0.8));
+    }
+
+    .hero-content {
+      position: relative;
+      color: #ffffff;
+      z-index: 2;
+      max-width: 800px;
+      padding: 20px;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    /* SEZIONE EVENTI */
     .main {
-      padding: 40px 20px;
+      padding: 80px 20px;
       text-align: center;
     }
 
-    .event-list {
-      max-width: 600px;
-      margin: 0 auto;
+    .main h2 {
+      font-size: 2.4rem;
+      color: var(--rosso-scuro);
+      margin-bottom: 10px;
+    }
+
+    .main p {
+      font-size: 1.1rem;
+      opacity: 0.8;
+      margin-bottom: 50px;
+    }
+
+    /* CARD EVENTI */
+    .event-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .event-card {
+      width: 320px;
+      background: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+      transition: 0.3s;
       text-align: left;
-      background-color: #FFF5F5;
-      border: 2px solid #D60000;
+    }
+
+    .event-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .event-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .event-info {
       padding: 20px;
     }
 
-    .event-list li {
-      margin-bottom: 15px;
+    .event-info h3 {
+      margin: 0;
+      font-size: 1.4rem;
+      color: var(--rosso-scuro);
     }
 
+    .event-info p {
+      margin-top: 10px;
+      font-size: 1rem;
+      opacity: 0.85;
+    }
+
+    /* FOOTER */
     footer {
-      background-color: #990000;
-      color: #FFFFFF;
+      background-color: var(--rosso-scuro);
+      color: #ffffff;
       text-align: center;
-      padding: 20px;
-      margin-top: 40px;
+      padding: 30px;
+      margin-top: 80px;
+      font-size: 0.95rem;
     }
   </style>
-</head>
-<body>
 
-  <header>
-    <div class="header-content">
-     
-      <div class="header-text">
-        <h1 style="margin: 0;">Casa del Popolo</h1>
-        <p style="margin: 0;">Un luogo per tutti</p>
-      </div>
-    </div>
-  </header>
+  <script>
+    // Navbar che diventa rossa quando scrolli
+    window.addEventListener("scroll", () => {
+      const nav = document.querySelector("nav");
+      if (window.scrollY > 50) nav.classList.add("scrolled");
+      else nav.classList.remove("scrolled");
+    });
+  </script>
+</head>
+
+<body>
 
   <nav>
     <a href="index.html">Home</a>
     <a href="chi-siamo.html">Chi Siamo</a>
     <a href="eventi.html">Eventi</a>
     <a href="contatti.html">Contatti</a>
-    <a href="spazi.html">Spazi e Servizi</a>
+    <a href="spazi.html">Spazi</a>
     <a href="galleria.html">Galleria</a>
-    <a href="recensioni.html">Recensioni</a>
-<a href="news.html">news</a>
+    <a href="news.html">News</a>
   </nav>
 
-  <div class="main">
+  <div class="hero">
+    <div class="hero-content fade-in">
+      <h1>Eventi</h1>
+    </div>
+  </div>
+
+  <div class="main fade-in">
     <h2>Prossimi Eventi</h2>
     <p>Partecipa alle attività della Casa del Popolo!</p>
-    <ul class="event-list">
-           <li><strong>29 Novembre2025:</strong> 2°edizione Rock Party</li>
-    </ul>
+
+    <div class="event-container">
+
+      <div class="event-card">
+        <img src="615208779_1320788406754874_7418802225648734435_n.jpg" alt="Repressione del dissenso">
+        <div class="event-info">
+          <h3>Repressione del dissenso</h3>
+          <p><strong>17/01/2026</strong></p>
+          <p>Dibattito Pubblico</p>
+        </div>
+      </div>
+
+    </div>
   </div>
 
   <footer>
-    <p>© 2025 Casa del Popolo – G.S.</p>
+    © 2025 Casa del Popolo – G.S.
   </footer>
 
 </body>
 </html>
-
